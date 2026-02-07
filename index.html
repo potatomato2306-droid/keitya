@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;500&display=swap');
+
+        :root {
+            --accent: #ff4d6d;
+            --text: #2d2d2d;
+        }
+        
+        #poem{
+            letter-spacing: 0.5px;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #fff5f6; /* Soft, clean pink tint */
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+
+        /* Smooth Background Fade */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #ffebef 100%);
+            z-index: -1;
+        }
+
+        /* Intro Section */
+        #intro {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin-bottom: 20px; color: var(--accent); }
+
+        .btn-group { display: flex; gap: 20px; position: relative; height: 50px; }
+        
+        button {
+            padding: 15px 40px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        #yes { background: var(--accent); color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); }
+        #no { background: white; border: 1px solid #ddd; color: #888; position: absolute; left: 160px; }   
+    /* Story Section */
+        #story {
+            display: none;
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .memory-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 150px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .memory-row.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .memory-row:nth-child(even) { flex-direction: row-reverse; }
+
+        .img-container {
+            border: #2d2d2d;
+            border-radius:2px;
+            width: 45%;
+            filter: grayscale(30%) contrast(1.1);
+            transition: 0.5s;
+        }
+        .img-container:hover { filter: grayscale(0%); transform: scale(1.02); }
+
+        .img-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .text-container {
+            
+            width: 45%;
+            padding: 20px;
+        }
+
+        .date {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .quote {
+            font-family: fantasy;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .heart-trail {
+            position: fixed;
+            pointer-events: none;
+            color: var(--accent);
+            z-index: 999;
+            animation: fadeUp 2s forwards;
+        }
+
+        @keyframes fadeUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="bg-overlay"></div>
+
+    <section id="intro">
+        <h1>Will you be mine?</h1>
+        <div class="btn-group">
+            <button id="yes">YES</button>
+            <button id="no">NO</button>
+        </div>
+        
+    </section>
+    <section id="story">
+        <h2 style="text-align:center; font-family:'Dancing Script'; font-size: 3rem; margin-bottom: 100px;">Our Chapters</h2>
+
+        <div class="memory-row">
+            <div class="img-container">
+                <img src="assets/fourth.jpg" alt="Sept 1" title="Bade Achhe Lagte Ho">
+            </div>
+            <div class="text-container">
+                <span class="date">September 1st, 2025</span>
+                
+                <p class="quote">"Where it all began. That first spark that changed everything."</p>
+                <p id="poem">We weren’t sure about us.<br/>
+We weren’t sure if we would meet again.<br/>
+We weren’t sure if what we felt was real.<br/>
+We weren’t sure if those tears meant something.<br/>
+We weren’t sure if the fear of losing each other was true.<br/>
+We weren’t sure if our bodies fit,<br/>
+or if our eyes were telling the truth.<br/>
+We weren’t sure if waves and curls could belong together.<br/>
+We weren’t sure if twinning was needed,<br/>
+or if being different was enough.<br/><br/>
+
+We weren’t sure of the paths we came from,<br/>
+or the paths we might walk together.<br/>
+We weren’t sure we would see each other that day.<br/>
+We weren’t sure we could be eachother's <i>bubbly</i>, and <i>kanna</i>.<br/>
+We weren’t sure if silence meant comfort<br/>
+or if distance meant goodbye.<br/>
+We weren’t sure if this was love,<br/>
+or just the beginning of learning how to feel.<br/>
+
+But in all that not knowing,<br/>
+we kept choosing to stay a little longer,<br/>
+and maybe that was the truest thing we knew.</p>
+            </div>
+        </div>
+
+        <div class="memory-row">
+            <div class="img-container">
+                <img src="assets/third.jpg" alt="Nov 6" title="Tose Naina Lage">
+            </div>
+            <div class="text-container">
+                <span class="date">November 6th & 7th, 2025</span>
+                <p class="quote">"Two days weren't enough. Every second spent with you felt like a dream I didn't want to wake up from."</p>
+                <p id="poem">There is happiness in seeing you waiting for me.<br/>
+There is happiness in hugging you, forgetting the world around us.<br/>
+There is happiness in hearing you say, “I am in love with you.”<br/>
+There is happiness when you open up and I learn your past.<br/>
+There is happiness in going home, with my home dropping me there.<br/>
+There is happiness in you staying another day for me.<br/>
+There is happiness in sleeping with your fragrance on me,<br/>
+knowing I can see you again tomorrow.<br/><br/>
+
+There is happiness in seeing you in formals<br/>
+and falling for you all over again.<br/>
+There is happiness in wearing jhumkas you got for me.<br/>
+There is happiness in wearing kumkum from your hands.<br/>
+There is happiness in eating laddoo from your hands.<br/>
+There is happiness in walking hand in hand,<br/>
+in playing on the swing with you.<br/>
+There is happiness in getting tense about families,<br/>
+and even when the train gets cancelled.<br/>
+There is happiness in a single reel,<br/>
+and in sharing a dosa.<br/>
+
+There is happiness in small moments,<br/>
+even when we are unsure what to call this.<br/>
+There is happiness in not knowing the future,<br/>
+but still choosing each other today.<br/>
+There is happiness in loving slowly,<br/>
+without promises, without certainty.<br/><br/>
+
+But there is no happiness in saying goodbye.<br/>
+There is no happiness in letting go of your hand.<br/>
+There is no happiness in the call after we leave.<br/>
+Yet, there is happiness with no reason to explain<br/>
+because we know this time,<br/>
+we will meet again.<br/><br/>
+
+You are my happy place,<br/>
+and that is why I call you home.</p>
+            </div>
+        </div>
+
+        <div class="memory-row">
+            <div class="img-container">
+                <img src="assets/second.jpg" alt="Jan 20">
+            </div>
+            <div class="text-container">
+                <span class="date">January 20th & 21st, 2026</span>
+                
+                <p class="quote">"Starting the new year by your side. You're the only resolution I want to keep."</p>
+                <p id="poem">
+Not new, not old.<br/>
+The light on our faces when we see each other.<br/>
+Not new, not old, going on bike rides..<br/>
+but with you, I can still feel you.<br/><br/>
+
+Not new, not old, the mountain view<br/>
+and playing with tralala, hahaha.<br/>
+Not new, not old..<br/>
+jhumkas, kadi,<br/>
+your hands choosing them for me,<br/>
+my heart keeping them forever.<br/>
+Not new, not old..<br/>
+Kondapalli roads,<br/>
+dosa shared,<br/>
+time slowing down just enough.<br/><br/>
+
+Not new, not old..<br/>
+me trying to capture you,<br/>
+failing at photographs,<br/>
+succeeding at remembering.<br/>
+Not new, not old, buying water at double the price.<br/>
+Not new, not old, getting blessings from them,<br/>
+which came in the form of a song..<br/>
+and you didn’t even know.<br/>
+Not new, not old..<br/>
+you in Vijayawada,<br/>
+me away from you,<br/>
+the distance suddenly heavy.<br/><br/>
+
+Not new, not old..<br/>
+taking my home to our home,<br/>
+you speaking to your mother outside my house,<br/>
+like you already belong.<br/>
+Not new, not old, finding my way till A-1<br/>
+just to walk into naked you.<br/>
+Not new, not old..<br/>
+paneer rice, shared drinks,<br/>
+my first and last cigarette,<br/>
+moments we don’t know we repeat,<br/>
+but won’t forget.<br/>
+Not new, not old, going to the station together,<br/>
+tripping on the escalator..<br/>
+only for you to have my back.<br/>
+Not new, not old..<br/>
+watching you moving away,<br/>
+me walking faster,<br/>
+waving higher,<br/>
+hurting just to stay seen.<br/>
+Not new, not old..<br/>
+tears waiting behind my eyes<br/>
+while your camera keeps rolling.<br/>
+Not new, not old..<br/>
+the space you leave behind,<br/>
+still shaped like you.<br/>
+Not new, not old..<br/>
+every road way back home is you.<br/><br/>
+
+Not new, not old..<br/>
+the same heavy call,<br/>
+words careful,<br/>
+hearts unsure.<br/><br/>
+
+Not new, not old..<br/>
+not calling it love,<br/>
+not walking away either.<br/>
+Just hope,<br/>
+quiet and stubborn,<br/>
+believing we are still choosing <i>each other</i>.<br/>
+
+</p>
+            </div>
+        </div>
+
+        <div class="memory-row">
+            <div class="img-container">
+                <img src="assets/first.jpg" alt="Feb 6">
+            </div>
+            <div class="text-container">
+                <span class="date">February 6th, 2026</span>
+                <p class="quote">"Just yesterday, and yet I already miss the way you look at me. Tomorrow is ours."</p>
+                <p id="poem">
+Despite the lie, we met.<br/>
+Despite the misunderstanding, we stayed.<br/>
+Despite the ego, our hearts stayed open.<br/>
+Despite the arguments, we breathed.<br/>
+Despite the breaking, we did not leave.<br/>
+Despite the words that hurt, there were hands that healed.<br/>
+Despite the silence, we learned how to speak.<br/><br/>
+
+Despite you understanding my dress isn’t the problem<br/>
+and not asking me to wear it,<br/>
+yet coming up with ideas to make me comfortable.<br/>
+Despite tolerating my moods,<br/>
+despite thinking about not hurting my feelings,<br/>
+despite your hands adjusting my hair..<br/>
+the purest form of love I have ever known.<br/><br/>
+
+Despite wearing black pants even though you’re uncomfortable<br/>
+just for a few minutes of my joy.<br/>
+Despite saying, “<i>I don’t show feelings</i>,”<br/>
+I see care in every move you make.<br/>
+Despite doing so much for me,<br/>
+here I am—useless and worrying you.<br/>
+Despite the scratches,<br/>
+loving while fixing what we almost lost.<br/>
+Staying. Fixing. Learning each other.<br/><br/>
+
+I mean, the cracks do let the light in, Adi.<br/>
+Fourth meets aren’t soft... they’re honest.<br/>
+Despite still not wanting to let go of your handshake,<br/>
+yet waving high again.<br/>
+Despite tears,<br/>
+I saw something else this time..<br/>
+the peace of knowing we’re not leaving each other.<br/><br/>
+
+Despite not knowing if this is love,<br/>
+our smiles grew brighter with each meet.<br/>
+And maybe that is enough.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; color: var(--accent); margin-top: 50px;">Waiting for our next Meet ❤️</h3>
+    </section>
+
+    <script>
+        const yes = document.getElementById('yes');
+        const no = document.getElementById('no');
+        const story = document.getElementById('story');
+        const intro = document.getElementById('intro');
+
+        // No button behavior - Fixed positioning math
+        no.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - no.offsetWidth);
+            const y = Math.random() * (window.innerHeight - no.offsetHeight);
+            no.style.position = 'fixed';
+            no.style.left = x + 'px';
+            no.style.top = y + 'px';
+        });
+
+        yes.addEventListener('click', () => {
+            intro.style.display = 'none';
+            story.style.display = 'block';
+            handleScroll(); // Check visibility immediately
+        });
+
+        function handleScroll() {
+            // Changed from '.memory' to '.memory-row' to match your HTML
+            const memories = document.querySelectorAll('.memory-row');
+            memories.forEach(m => {
+                const rect = m.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    // Changed from '.show' to '.visible' to match your CSS
+                    m.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+
+</body>
+</html>
