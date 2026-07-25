@@ -21,16 +21,20 @@
             background: #fff5f6; /* Soft, clean pink tint */
             color: var(--text);
             overflow-x: hidden;
+overflow-y: auto;
+position: relative;
         }
 
 
         /* Smooth Background Fade */
-        .bg-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #ffebef 100%);
-            z-index: -1;
-        }
+        .bg-overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
 
         /* Intro Section */
         #intro {
@@ -135,9 +139,47 @@
             100% { transform: translateY(-100px); opacity: 0; }
             
         }
+        /* ================= Floating Sky Blue Hearts ================= */
 
-       
+.floating-heart{
+    position:fixed;
+    pointer-events:none;
+    z-index:999;
+    bottom:-40px;
 
+    animation:floatHeart linear forwards;
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,20,147,.35));
+
+    opacity:.95;
+}
+@keyframes floatHeart {
+
+    0%{
+        transform:translateY(0) scale(.5);
+        opacity:.05;
+    }
+
+    25%{
+        opacity:.2;
+    }
+
+    50%{
+        opacity:.45;
+    }
+
+    75%{
+        opacity:.75;
+    }
+
+    100%{
+        transform:
+            translateY(-130vh)
+            translateX(var(--drift));
+        opacity:1;
+    }
+}
        
     </style>
 </head>
@@ -836,6 +878,64 @@ Holding on for as long as we possibly could before letting go. </br></br>
         }
 
         window.addEventListener('scroll', handleScroll);
+         /* ================= Floating Hearts ================= */
+/* ================= Floating Hearts ================= */
+
+function createFloatingHeart() {
+
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+
+    const id = "g" + Math.random().toString(36).substring(2, 8);
+
+    heart.innerHTML = `
+    <svg width="26" height="26" viewBox="0 0 24 24">
+        <defs>
+            <linearGradient id="${id}" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#ff1493" stop-opacity="0.05"/>
+                <stop offset="25%" stop-color="#ff1493" stop-opacity="0.18"/>
+                <stop offset="50%" stop-color="#ff1493" stop-opacity="0.45"/>
+                <stop offset="75%" stop-color="#ff1493" stop-opacity="0.75"/>
+                <stop offset="100%" stop-color="#ff1493" stop-opacity="1"/>
+            </linearGradient>
+        </defs>
+
+        <path
+            fill="url(#${id})"
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+               2 5.42 4.42 3 7.5 3
+               c1.74 0 3.41.81 4.5 2.09
+               C13.09 3.81 14.76 3 16.5 3
+               19.58 3 22 5.42 22 8.5
+               c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>`;
+
+    // Random position across the whole page
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    // Different sizes
+    const size = 12 + Math.random() * 30;
+    heart.style.width = size + "px";
+    heart.style.height = size + "px";
+
+    // Different speeds
+    heart.style.animationDuration = (8 + Math.random() * 8) + "s";
+
+    // Random drifting
+    heart.style.setProperty(
+        "--drift",
+        (Math.random() * 300 - 150) + "px"
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 17000);
+}
+
+// Start generating hearts
+setInterval(createFloatingHeart, 250);
     </script>
 
 </body>
